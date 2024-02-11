@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const cartSchema = new mongoose.Schema({
-    id: String,
+    id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'products' // Esto indica a Mongoose a qué colección hace referencia este ObjectId
+    },
     stock: Number
 });
 

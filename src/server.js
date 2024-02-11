@@ -42,16 +42,29 @@ app.post('/createProduct', (req, res) => {
   } 
 })
 
-// Route for get all the cart items
+// Route for get all the cart items with a $lookup search that brings all the product data in the
+// product_info field
+
 app.get('/cart', async (req, res) => {
   try {
-    const cart = await Cart.find(); // Find all the cart products on the db
-    res.json(cart); // Send all in json 
+    const cart = await Cart.aggregate(
+      [
+        {
+          $lookup: {
+            from: 'products',
+            localField: 'id',
+            foreignField: '_id',
+            as: 'product_info'
+          }
+        }
+      ]);
+    res.json(cart)
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'No se han podido obtener los productos', error });
   }
-});
+}); 
+
 
 app.post('/cart', async (req, res) => {
   try {
@@ -67,5 +80,20 @@ app.post('/cart', async (req, res) => {
       res.status(500).json({ message: 'No se ha podido crear el producto', error });
   }
 });
+
+app.delete('/cart/:id', async (req, res) => {
+  const cartItemId = req.params.id;
+  try {
+    const deletedItem = await Cart.findByIdAndDelete(cartItemId);
+    if (!deletedItem) {
+      return res.status(404).json({ message: 'El elemento del carrito no se encontró' });
+    }
+    res.json({ message: 'Elemento del carrito eliminado con éxito', deletedItem });
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'No se ha podido eliminar el item del carrito', error });
+  }
+
+})
 
 module.exports = app;
