@@ -12,10 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 // Settings
-app.set('port', process.env.PORT || 4000); // if the port variable exists in the env use it and if not, use port 4000
+app.set('port', process.env.PORT || 4000); // if the port variable exists in the .env use it.If not, use port 4000
 
 // Routes
-
 // Route for get all the products
 app.get('/products', async (req, res) => {
   try {
@@ -67,7 +66,6 @@ app.post('/cart', async (req, res) => {
   try {
     // Verify if the product is alredy in the cart
     const existingProduct = await Cart.findOne({ id: req.body.id });
-
     if (existingProduct) {
       return res.status(400).json({ message: "The product is already in the cart" });
     }
@@ -94,13 +92,13 @@ app.post('/cart', async (req, res) => {
 app.delete('/cart/:id', async (req, res) => {
   const cartItemId = req.params.id;
   const productId = req.query.id_product;
-  console.log(productId)
 
   try {
     const deletedItem = await Cart.findByIdAndDelete(cartItemId);
     if (!deletedItem) {
       return res.status(404).json({ message: 'Cart item not found' });
     }
+    //stock +1 when removing the item $inc: {stock: 1}
     await Products.updateOne({ _id: req.query.id_product }, { $inc: { stock: 1 } })
     res.json({ message: 'Cart item successfully deleted', deletedItem });
 
