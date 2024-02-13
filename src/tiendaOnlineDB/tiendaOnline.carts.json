@@ -1,0 +1,20 @@
+[{
+  "_id": {
+    "$oid": "65cad1cc3756061b380a70c6"
+  },
+  "id": {
+    "$oid": "65c52becbd2a8eff9f29e64a"
+  },
+  "stock": 4,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65cad1d03756061b380a70ca"
+  },
+  "id": {
+    "$oid": "65c4b0d823dda05af2fabf70"
+  },
+  "stock": 6,
+  "__v": 0
+}]

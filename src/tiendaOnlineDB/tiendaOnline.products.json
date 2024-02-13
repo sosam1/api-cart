@@ -1,0 +1,43 @@
+[{
+  "_id": {
+    "$oid": "65c4b0d823dda05af2fabf70"
+  },
+  "marca": "Apple",
+  "modelo": "Iphone 13",
+  "precio": 999,
+  "stock": 6,
+  "imagen": "https://storage.googleapis.com/catalog-pictures-carrefour-es/catalog/pictures/hd_510x_/0194253124818_1.jpg"
+},
+{
+  "_id": {
+    "$oid": "65c52becbd2a8eff9f29e64a"
+  },
+  "marca": "Apple",
+  "modelo": "Iphone 12 pro max",
+  "precio": 800,
+  "stock": 4,
+  "imagen": "https://cdn.alloallo.media/catalog/product/apple/iphone/iphone-12-pro-max/iphone-12-pro-max-gold.jpg",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c52c2a0852a71f35c024cd"
+  },
+  "marca": "Apple",
+  "modelo": "Iphone 11 pro max",
+  "precio": 700,
+  "stock": 2,
+  "imagen": "https://http2.mlstatic.com/D_Q_NP_798690-MLA32646972283_102019-O.webp",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65c533fe9b962c90ddce5d32"
+  },
+  "marca": "Apple",
+  "modelo": "Iphone SE",
+  "precio": 400,
+  "stock": 4,
+  "imagen": "https://http2.mlstatic.com/D_Q_NP_970843-MLA47681019925_092021-O.webp",
+  "__v": 0
+}]
